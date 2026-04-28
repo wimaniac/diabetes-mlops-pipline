@@ -34,9 +34,7 @@ docker-compose up --build -d
 ```
 
 ### Bước 3: Trải nghiệm ứng dụng
-Sau khi quá trình build hoàn tất, hệ thống sẽ mở ở các cổng sau:
-- 🎨 **Giao diện người dùng (Streamlit):** http://localhost:8501
-- ⚡ **Tài liệu API & Backend (FastAPI Swagger UI):** http://localhost:8000/docs
+Sau khi quá trình build hoàn tất, hệ thống được triển khai trên nền tảng PaaS - Render: https://diabetes-app-2ku5.onrender.com/
 
 ## 📂 Cấu trúc thư mục (Project Structure)
 ```text
@@ -55,6 +53,3 @@ diabetes-mlops/
 ├── pyproject.toml          # Cấu hình dependency cho uv
 └── README.md
 ```
-
-## 👨‍💻 Tác giả
-Dự án được phát triển nhằm mục đích nghiên cứu và áp dụng MLOps vào thực tế.
