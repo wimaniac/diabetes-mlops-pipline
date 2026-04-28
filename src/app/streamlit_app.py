@@ -41,4 +41,4 @@ if st.button("Dự đoán nguy cơ"):
         else:
             st.success(f"✅ AN TOÀN: {result['risk_status']}. (Xác suất: {result['probability_0']:.2%})")
     except Exception as e:
-        st.error("Lỗi: Không thể kết nối tới API. Vui lòng chắc chắn rằng FastAPI đang chạy ở port 8000.")
+        st.error(f"Lỗi: Không thể kết nối tới API tại `{api_url}`. Chi tiết: {e}")
