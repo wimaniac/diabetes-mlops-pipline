@@ -34,11 +34,14 @@ if st.button("Dự đoán nguy cơ"):
     try:
         # Gửi HTTP POST request sang FastAPI
         response = requests.post(api_url, json=payload)
-        result = response.json()
         
-        if result["prediction"] == 1:
-            st.error(f"⚠️ CẢNH BÁO: {result['risk_status']}! (Xác suất: {result['probability_1']:.2%})")
+        if response.status_code == 200:
+            result = response.json()
+            if result["prediction"] == 1:
+                st.error(f"⚠️ CẢNH BÁO: {result['risk_status']}! (Xác suất: {result['probability_1']:.2%})")
+            else:
+                st.success(f"✅ AN TOÀN: {result['risk_status']}. (Xác suất: {result['probability_0']:.2%})")
         else:
-            st.success(f"✅ AN TOÀN: {result['risk_status']}. (Xác suất: {result['probability_0']:.2%})")
+            st.error(f"Lỗi từ hệ thống (Mã {response.status_code}): {response.text}")
     except Exception as e:
         st.error(f"Lỗi: Không thể kết nối tới API tại `{api_url}`. Chi tiết: {e}")
